@@ -1,6 +1,7 @@
 # Problem 3
 import random
-def monte_carlo(n):
+
+def monte_carlo_route(n):
     NY_ATL = 866
     NY_NSH = 900
     NY_ATL_NOLA_Dallas = 975
@@ -10,6 +11,7 @@ def monte_carlo(n):
 
     Nashville_Distance = []
     Atlanta_Distance = []
+
     route1 = [NY_ATL, NY_NSH]
     route2 = [NY_ATL_NOLA_Dallas, NY_ATL_STLouis_Dallas]
     route3 = [NY_NSH_STLouis_Dallas, NY_NSH_NOLA_Dallas]
@@ -20,6 +22,7 @@ def monte_carlo(n):
       wicked_witch = random.randint(0,1)
       MM_loc1 = random.randint(0,1) # First index
       mad_max = mad_max + route1[MM_loc1]
+
       if route1[MM_loc1] == NY_ATL:
           start_from = "Atlanta"
           next_route = route2
@@ -28,15 +31,13 @@ def monte_carlo(n):
           next_route = route3
 
       MM_loc2 = random.randint(0,1) # Second index
-      current_route = next_route[MM_loc2]
-
       if next_route[MM_loc2] == next_route[wicked_witch]:
         # Run into Wicked Witch
         if MM_loc2 == 0:
-          mad_max = mad_max + next_route[MM_loc2 + 1]
+          mad_max = mad_max + next_route[1]
           # Switch routes
         else:
-          mad_max = mad_max + next_route[MM_loc2 - 1]
+          mad_max = mad_max + next_route[0]
           # Switch routes
       else:
         mad_max = mad_max + next_route[MM_loc2]
@@ -53,7 +54,4 @@ def monte_carlo(n):
       print('Starting from Atlanta is the shorter route')
     else:
       print('Starting from Nashville is the shorter route')
-    return 'Atlanta Miles: ' + str(ATL_Total), 'Nashville Miles: ' + str(NSH_Total)
-
-result = monte_carlo(n = 100000)
-result
+    return f'Atlanta Miles: {ATL_Total}', f'Nashville Miles: {NSH_Total}'

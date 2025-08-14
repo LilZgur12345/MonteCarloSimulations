@@ -1,5 +1,6 @@
 # Problem 1
 import random
+
 def roll(num_dice):
   dice_faces = []
   for i in range(num_dice):
@@ -24,8 +25,4 @@ def monte_carlo():
   print('Probability that the sum of the faces equals 16: ' + str(probability1))
   probability2 = (count2 / num_trials)
   print('Probability that the sum of the faces equals 20: ' + str(probability2))
-  if probability1 > probability2:
-    return True
-  else:
-    return False
-print('The first probability is greater than the second: ' + str(monte_carlo()))
+  return probability1 > probability2
