@@ -1,0 +1,9 @@
+[project]
+name = "montecarlosimulations"
+version = "0.1.0"
+description = "ML_Problems"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "scipy >=1.11.0",
+    matplotlib>=3.7.1"]
